@@ -1,0 +1,27 @@
+<mat-toolbar color="primary">
+	<mat-toolbar-row class="toolbar">
+		<a mat-button routerLink="/home">Home</a>
+		<a *ngIf="user.isLoggedIn()" mat-button routerLink="/gallary">Gallary</a>
+		<a mat-button routerLink="/about" routerLinkActive="active">About</a>
+		<a *ngIf="!user.isLoggedIn()" mat-button routerLink="/login">Login</a>
+		<div *ngIf="user.isLoggedIn()">
+			<button mat-button [matMenuTriggerFor]="menu">{{userName}}</button>
+			<mat-menu #menu="matMenu">
+				<button (click)="logout()" mat-menu-item>Logout</button>
+			</mat-menu>
+		</div>
+	</mat-toolbar-row>
+</mat-toolbar>
+
+<main>
+	<router-outlet></router-outlet>
+</main>
+
+<!-- Footer -->
+<footer color="primary" class="footer-copyright">
+	<div>
+		© 2021 Copyright:
+		<a href="https://www.investopedia.com/stock-analysis/021815/worlds-top-ten-media-companies-dis-cmcsa-fox.aspx">
+			media.com</a>
+	</div>
+</footer>
